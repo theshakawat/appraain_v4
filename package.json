@@ -1,0 +1,26 @@
+{
+  "name": "apprain_v4",
+  "version": "4.0.5",
+  "description": "A PHP Framework with CMS",
+  "main": "app.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Mohammad Reazaul Karim",
+  "contributors": [
+    {
+      "name": "Md Shakawat Hossain",
+      "email": "md.shakawat.hossain@outlook.com",
+      "url": "https://shakawat.vercel.app"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apprain/apprain.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

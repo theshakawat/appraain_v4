@@ -1,0 +1,70 @@
+<?php
+/**
+ * appRain CMF
+ *
+ * LICENSE
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.opensource.org/licenses/mit-license.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@apprain.com so we can send you a copy immediately.
+ *
+ * @copyright  Copyright (c) 2010 appRain, Team. (http://www.apprain.org)
+ * @license    http://www.opensource.org/licenses/mit-license.php MIT license
+ *
+ * HELP
+ *
+ * Official Website
+ * http://www.apprain.org/
+ *
+ * Download Link
+ * http://www.apprain.org/download
+ *
+ * Documents Link
+ * http ://www.apprain.org/general-help-center
+ */
+?>
+<br class="clearboth" />
+<?php App::Module('Notification')->Display();?>
+<?php if($action == 'upload'):?>
+<form method="post" action="<?php echo App::Config()->baseUrl("/admin/filemanager/upload");?>" enctype="multipart/form-data"> 
+<div class="box">
+    <div class="title">
+        <h5><?php echo $this->__('Regular Upload');?></h5>
+    </div>
+    <div id="box-left-forms">
+        <div class="form">
+			<div class="fields">
+                 <div class="field first">
+                    <div class="label">
+                        <label for="input"><?php echo $this->__('Select File:');?></label>
+                    </div>
+                    <div class="input">
+                        <input type="file" name="data[filemanager][image]" />
+                    </div>
+                </div>
+				<div class="buttons">
+                    <input type="submit" name="submit" value="Upload"/>
+                </div>
+            </div>
+		</div>
+	</div>
+</div>
+</form>
+<?php endif;?>
+	<?php 
+		App::Helper('Toolbar')->setTitle($this->__("File Manager"))->setBtnFilemanagerSrcBox($srcstr);			
+		if($viewtype == 'list'){
+			App::Helper('Toolbar')->setBtnCustomHTML(' <input onclick="window.location = siteInfo.baseUrl + \'/admin/filemanager?view=grid\'" type="button" value="VIEW IN GRID" />  <input onclick="window.location = siteInfo.baseUrl + \'/admin/filemanager/upload\'" type="button" value="UPLOAD" /> ');
+		}
+		else{
+			App::Helper('Toolbar')->setBtnCustomHTML(' <input onclick="window.location = siteInfo.baseUrl + \'/admin/filemanager?view=list\'" type="button" value="VIEW IN LIST" /> <input onclick="window.location = siteInfo.baseUrl + \'/admin/filemanager/upload\'" type="button" value="UPLOAD" />');
+		} 
+		App::Helper('Toolbar')->Render(array('code' => 'filemanager_top')); 
+	?>
+	<?php App::Module('FileManager')->displayFileList($viewtype,"{$srcstr}"); ?>
+	
+	<?php echo App::Helper('Toolbar')->setBtnBack()->Render(array('code' => 'filemanager_bottom')); ?>
